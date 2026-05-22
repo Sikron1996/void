@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VOID SIGNALS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="page">
+  <header>
+    <div class="brand">VOID SIGNALS</div>
+    <nav>
+      <a href="#mint">Mint</a>
+      <a href="#archive">Archive</a>
+      <a id="etherscanLink" href="#" target="_blank">Etherscan</a>
+      <a id="openseaLink" href="#" target="_blank">OpenSea</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="copy">
+      <div class="tag">UNKNOWN TRANSMISSION / ETHEREUM</div>
+      <h1>10,000 signals from the void.</h1>
+      <p>
+        Sealed cosmic transmissions stored as onchain SVG.
+        One free signal per wallet. After sell out, the signal opens in 3 hours.
+      </p>
+
+      <div class="terminal">
+        <p>&gt; signal_detected: true</p>
+        <p>&gt; stage: sealed</p>
+        <p>&gt; reveal: sold_out + 3h</p>
+      </div>
+    </div>
+
+    <div class="signalPreview">
+      <svg viewBox="0 0 500 500">
+        <defs>
+          <radialGradient id="space" cx="50%" cy="40%" r="75%">
+            <stop offset="0%" stop-color="#21143b"/>
+            <stop offset="60%" stop-color="#050711"/>
+            <stop offset="100%" stop-color="#000"/>
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="5" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <rect width="500" height="500" fill="url(#space)"/>
+        <circle cx="70" cy="90" r="2" fill="#fff"/>
+        <circle cx="420" cy="120" r="2" fill="#7de7ff"/>
+        <circle cx="380" cy="360" r="2" fill="#b976ff"/>
+        <circle cx="110" cy="390" r="1.5" fill="#fff"/>
+        <ellipse cx="250" cy="405" rx="120" ry="22" fill="#000" opacity=".45"/>
+        <circle cx="250" cy="250" r="115" fill="#05060a" stroke="#7de7ff" stroke-width="4" filter="url(#glow)"/>
+        <circle cx="250" cy="250" r="68" fill="none" stroke="#b976ff" stroke-width="5"/>
+        <circle cx="250" cy="250" r="20" fill="#000" stroke="#fff" stroke-width="3"/>
+        <path d="M135 220 C200 180 295 185 365 225" stroke="#7de7ff" stroke-width="4" fill="none" opacity=".65"/>
+        <path d="M145 300 C210 340 295 335 355 295" stroke="#b976ff" stroke-width="4" fill="none" opacity=".65"/>
+        <rect x="130" y="190" width="60" height="4" fill="#fff"/>
+        <rect x="290" y="310" width="76" height="4" fill="#7de7ff"/>
+        <text x="30" y="42" fill="#7de7ff" font-family="monospace" font-size="18">VOID SIGNAL #0001</text>
+        <text x="30" y="470" fill="#b976ff" font-family="monospace" font-size="15">LOCKED / WAITING FOR SYNC</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="mint" class="mintPanel">
+    <div class="stats">
+      <div><b>10,000</b><span>Supply</span></div>
+      <div><b>1 Free</b><span>Per wallet</span></div>
+      <div><b>0.00005 ETH</b><span>Next mints</span></div>
+      <div><b>3 Hours</b><span>After sold out</span></div>
+    </div>
+
+    <div class="progressTop">
+      <span>Synchronization</span>
+      <span id="mintedText">0 / 10000</span>
+    </div>
+    <div class="bar"><div id="progressBar"></div></div>
+
+    <div class="connect">
+      <button id="connectWalletBtn">Connect Wallet</button>
+      <button id="disconnectBtn">Disconnect</button>
+      <span id="wallet">not connected</span>
+    </div>
+
+    <div class="controls">
+      <button id="minusBtn">-</button>
+      <input id="amountInput" value="1">
+      <button id="plusBtn">+</button>
+      <div class="price">Total: <b id="priceText">FREE</b></div>
+      <button id="mintBtn" class="mint">Mint Signal</button>
+    </div>
+
+    <p id="status"></p>
+  </section>
+
+  <section id="archive" class="archive">
+    <div class="archiveHead">
+      <h2>Latest Signals</h2>
+      <button id="loadGalleryBtn">Load Archive</button>
+    </div>
+    <div id="galleryGrid" class="gallery"></div>
+  </section>
+</main>
+
+<div id="walletModal" class="modal hidden">
+  <div class="modalCard">
+    <button id="closeModalBtn" class="close">×</button>
+    <h3>Connect Wallet</h3>
+    <button id="browserWalletBtn">MetaMask / Rabby / Browser Wallet</button>
+    <button id="walletConnectBtn">WalletConnect QR / Mobile Wallets</button>
+  </div>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
